@@ -1,24 +1,9 @@
-# border-radius-previewer
+# Border radius previewer
+A propriedade ```border-radius``` pode ter múltiplos valores alterados. Faça uma demonstração de como o elemento ficaria enquanto muda os valores.
 
-## Project setup
-```
-npm install
-```
+## O que precisa ser feito
+- [] Usuário pode ver um elemento com a propriedade ```border-radius``` aplicada.
+- [] Usuário pode alterar os 4 valores do ```border-radius``` aplicado ao elemento (```top-left```, ```top-right```, ```bottom-left```, ```bottom-right```).
+- [] Usuário pode copiar o css resultante para a área de seleção.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [ ] Usuário pode alterar todos os 8 valores possíveis do ```border-radius``` para criar um elemento complexo.
