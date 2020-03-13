@@ -1,13 +1,17 @@
 <template>
   <div class="main">
-    <div class="box-inputs box-top">
+    <div class="box box-inputs box-top">
       <input type="number" class="input-border i-left" v-model="borderTopLeft" @change="changeBorder()">
       <input type="number" class="input-border i-right" v-model="borderTopRight" @change="changeBorder()">
     </div>
-    <div class="box"></div>
-    <div class="box-inputs box-bottom">
+    <div class="box box-element"></div>
+    <div class="box box-inputs box-bottom">
       <input type="number" class="input-border i-left" v-model="borderBottomLeft" @change="changeBorder()">
       <input type="number" class="input-border i-right" v-model="borderBottomRight" @change="changeBorder()">
+    </div>
+    <div class="box box-textarea">
+      <textarea v-model="selection" class="form-control" id="selection" readonly cols="30" rows="10" @click="copyToClipboard()"></textarea>
+      <button class="btn btn-primary btn-block" @click="copyToClipboard()">Copiar para área de transferência</button>
     </div>
   </div>
 </template>
@@ -21,16 +25,26 @@ export default {
       borderBottomLeft: 0,
       borderBottomRight: 0,
       borders: [],
+      selection: '',
     }
   },
   methods: {
     changeBorder() {
-      this.borders = [this.borderTopLeft, this.borderTopRight, this.borderBottomLeft, this.borderBottomRight, ''];
+      this.borders = [this.borderTopLeft, this.borderTopRight,this.borderBottomRight, this.borderBottomLeft,''];
       let strBorders = this.borders.join('px ');
+      strBorders = strBorders.trim();
       
-      let box = document.getElementsByClassName('box')[0];
-      console.log(box);
+      let box = document.getElementsByClassName('box-element')[0];
       box.style.borderRadius = strBorders;
+      this.selection = `border-radius: ${strBorders};`;
+    },
+    copyToClipboard() {
+      let textarea = document.getElementById('selection');
+
+      textarea.select();
+      textarea.setSelectionRange(0, 99999); // Para aplicativos móveis
+
+      document.execCommand('copy');
     }
   },
 }
@@ -39,14 +53,24 @@ export default {
 <style>
 .box {
   width: 400px;
-  height: 200px;
-  background-color: #aaa;
   margin: auto;
 }
 
-.box-inputs {
+.box-element {
+  height: 200px;
+  background-color: #2a2a72;
+  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
+.box-textarea {
+  margin-top: 20px;
+}
+
+.box-textarea textarea {
   width: 400px;
-  margin: auto;
+  background-color: #f5f5f5;
+  resize: none;
+  margin-bottom: 5px;
 }
 
 .box-top {
