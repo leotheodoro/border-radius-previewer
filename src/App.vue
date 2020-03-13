@@ -1,30 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <previewer></previewer>
   </div>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.css"
 import "font-awesome/css/font-awesome.css"
-import HelloWorld from './components/HelloWorld.vue'
+import Previewer from './components/Previewer'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Previewer
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 </style>
